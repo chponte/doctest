@@ -1,5 +1,5 @@
 PROJECT_NAME      = "doctest"
-XML_OUTPUT        = build/doxygen-xml
+XML_OUTPUT        = build/doxygen/xml
 INPUT             = ../src
 GENERATE_LATEX    = NO
 GENERATE_MAN      = NO

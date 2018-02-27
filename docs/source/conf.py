@@ -159,7 +159,7 @@ texinfo_documents = [
 
 # -- Extension configuration -------------------------------------------------
 
-breathe_projects = { "doctest": "../build/doxygen-xml" }
+breathe_projects = { "doctest": "../build/doxygen/xml" }
 
 breathe_default_project = "doctest"
 
@@ -183,6 +183,7 @@ def generate_doxygen_xml(app):
     read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
 
     if read_the_docs_build:
+        os.makedirs('../build/doxygen/', exist_ok=True)
         run_doxygen("..")
 
 
