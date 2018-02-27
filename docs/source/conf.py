@@ -12,9 +12,9 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+import subprocess
 
 
 # -- Project information -----------------------------------------------------
@@ -40,6 +40,7 @@ release = '0.0.1'
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
+    'breathe'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -157,3 +158,34 @@ texinfo_documents = [
 
 
 # -- Extension configuration -------------------------------------------------
+
+breathe_projects = { "doctest": "../build/doxygen/xml" }
+
+breathe_default_project = "doctest"
+
+
+# -- Build hooks -------------------------------------------------------------
+
+def run_doxygen(folder):
+    """Run the doxygen make command in the designated folder"""
+
+    try:
+        retcode = subprocess.call("cd %s; doxygen" % folder, shell=True)
+        if retcode < 0:
+            sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
+    except OSError as e:
+        sys.stderr.write("doxygen execution failed: %s" % e)
+
+
+def generate_doxygen_xml(app):
+    """Run the doxygen make commands if we're on the ReadTheDocs server"""
+
+    read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
+
+    if read_the_docs_build:
+        run_doxygen("..")
+
+
+def setup(app):
+    # Add hook for building doxygen xml when needed
+    app.connect("builder-inited", generate_doxygen_xml)
