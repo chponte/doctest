@@ -159,7 +159,7 @@ texinfo_documents = [
 
 # -- Extension configuration -------------------------------------------------
 
-breathe_projects = { "doctest": "../build/doxygen/xml" }
+breathe_projects = { "doctest": "../build/doxygen-xml" }
 
 breathe_default_project = "doctest"
 

@@ -2,6 +2,7 @@
  * @file Printer.h
  * @author Christian Ponte
  * @date 16/02/2018
+ *
  * @brief Example class used in documentation example.
  *
  * A more detailed description of the file can be found here.

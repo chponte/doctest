@@ -2,6 +2,7 @@
  * @file Printer.cpp
  * @author Christian Ponte
  * @date 16/02/2018
+ *
  * @brief Implementation of Printer class.
  *
  * A more detailed description of the class implementation can be found here.

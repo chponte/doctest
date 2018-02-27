@@ -11,10 +11,13 @@ Block of code
 
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+    :maxdepth: 2
+    :caption: Contents:
 
-   license
+    main
+    printer
+    license
+
 
 Indices and tables
 ==================
